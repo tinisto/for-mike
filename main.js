@@ -18,24 +18,32 @@ for (let i_ball = 0; i_ball < colorBall.length; i_ball++) {
   balldiv.style.borderRadius = "25px";
   balldiv.setAttribute("draggable", "true");
   ball.append(balldiv);
-  balldiv.addEventListener("dragstart", function dragstartball() {
+  balldiv.addEventListener("dragstart", function dragstartBall() {
+    console.log("dragstartBall", dragstartBall);
     draggedBall = this;
     setTimeout(() => {
       this.style.display = "none";
     }, 0);
   });
-  balldiv.addEventListener("dragend", function dragendball() {
+  balldiv.addEventListener("dragend", function dragendBall() {
     this.style.display = "block";
+    console.log("dragendBall", dragendBall);
   });
 
   for (let y_ball = 0; y_ball < lists_ball.length; y_ball++) {
     const element_ball = lists_ball[y_ball];
-    element_ball.addEventListener("dragenter", function dragenterball() {});
-    element_ball.addEventListener("dragleave", function dragleaveball() {});
-    element_ball.addEventListener("dragover", function dragoverball(e) {
-      e.preventDefault();
+    element_ball.addEventListener("dragenter", function dragenterBall() {
+      console.log("dragenterBall", dragenterBall);
     });
-    element_ball.addEventListener("drop", function dropball() {
+    element_ball.addEventListener("dragleave", function dragleaveBall() {
+      console.log("dragleaveBall", dragleaveBall);
+    });
+    element_ball.addEventListener("dragover", function dragoverBall(e) {
+      e.preventDefault();
+      console.log("dragoverBall", dragoverBall);
+    });
+    element_ball.addEventListener("drop", function dropBall() {
+      console.log("dropBall", dropBall);
       this.append(draggedBall);
     });
   }
@@ -44,31 +52,37 @@ for (let i_ball = 0; i_ball < colorBall.length; i_ball++) {
 // тут вывожу белые блоки
 for (let i = 0; i < list_items.length; i++) {
   const elementOfList_items = list_items[i];
-  elementOfList_items.addEventListener("dragstart", function dragstartsquare() {
+  elementOfList_items.addEventListener("dragstart", function dragstartSquare() {
+    console.log("dragstartSquare", dragstartSquare);
     setTimeout(() => {
       this.style.display = "none";
-      draggedElement = this;
+      draggedElement = thisB;
     }, 0);
   });
-  elementOfList_items.addEventListener("dragend", function dragendsquare() {
+  elementOfList_items.addEventListener("dragend", function dragendSquare() {
     this.style.display = "block";
+    console.log("dragendSquare", dragendSquare);
   });
 
   // sort lists div
   for (let j = 0; j < lists_square.length; j++) {
     const elementOfLists = lists_square[j];
-    elementOfLists.addEventListener("dragenter", function dragentersquare() {
+    elementOfLists.addEventListener("dragenter", function dragenterSquare() {
       this.style.backgroundColor = "rgba(0,0,0,0.2)";
+      console.log("dragenterSquare", dragenterSquare);
     });
-    elementOfLists.addEventListener("dragleave", function dragleavesquare() {
+    elementOfLists.addEventListener("dragleave", function dragleaveSquare() {
       this.style.backgroundColor = "rgba(0,0,0,0.1)";
+      console.log("dragleaveSquare", dragleaveSquare);
     });
-    elementOfLists.addEventListener("drop", function dropsquare() {
+    elementOfLists.addEventListener("drop", function dropSquare() {
       this.style.backgroundColor = "rgba(0,0,0,0.1)";
       this.append(draggedElement);
+      console.log("dropSquare", dropSquare);
     });
-    elementOfLists.addEventListener("dragover", function dragoversquare(e) {
+    elementOfLists.addEventListener("dragover", function dragoverSquare(e) {
       e.preventDefault();
+      console.log("dragoverSquare", dragoverSquare);
     });
   }
 }
